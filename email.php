@@ -3,21 +3,29 @@ require_once 'sendgrid-php\sendgrid-php.php';
 
 require 'vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__); //Notice the Namespace and Class name
 $dotenv->load();
 
-echo $_ENV['SENDGRID_API_KEY'];
-
+use SendGrid\Mail\From;
+use SendGrid\Mail\To;
 use SendGrid\Mail\Mail;
 
-$email = new Mail();
-$email->setFrom("akash.np@lakshyaca.com", "Example User");
-$email->setSubject("Sending with Twilio SendGrid is Fun");
-$email->addTo("akash.np@lakshyaca.com", "Example User");
-$email->addContent("text/plain", "and easy to do anywhere, even with PHP");
-$email->addContent(
-    "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
+$from = new From("akash.np@lakshyaca.com", "Akash NP");
+$to = new To(
+    "akash.np@lakshyaca.com",
+    "Akash NP",
+    [
+        'subject' => 'Lakshya Scholarship - Registration Success',
+        'name' => 'Akash NP',
+        'login_id' => 'LAK-SC-001'
+    ]
+    );
+$email = new Mail(
+    $from, 
+    $to
 );
+$email->setTemplateId('d-bbfe2ebc64d140c29d8a0955e85fdbe0');
+
 $sendgrid = new \SendGrid($_ENV['SENDGRID_API_KEY']);
 try {
     $response = $sendgrid->send($email);
