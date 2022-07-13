@@ -10,7 +10,7 @@ if($res)
  }     
 }
 
-$url = 'https://api-in21.leadsquared.com/v2/ProspectActivity.svc/CreateCustom?accessKey=u$r93cb244dbbe38e90909d3172202aa752&secretKey=6dde0661aebf7d5d1ae671c0f84c67117042b8e7&SearchBy=EmailAddress';
+$url = 'https://api-in21.leadsquared.com/v2/ProspectActivity.svc/CreateCustom?accessKey=AccessKey&secretKey=Secret&SearchBy=EmailAddress';
 
 $ch = curl_init($url);
 //echo $owner_id;

@@ -20,9 +20,9 @@ $api = new Api($keyId, $keySecret);
 // Docs: https://docs.razorpay.com/docs/orders
 //
 $price =200;
-//$_SESSION['price'] = $price;
-//$customername = $_SESSION['name'];
-//$email =$_SESSION['email'];
+$_SESSION['price'] = $price;
+$customername = $_SESSION['name'];
+$email =$_SESSION['email'];
 $contactno = $phno;
 $orderData = [
     'receipt'         => 3456,
